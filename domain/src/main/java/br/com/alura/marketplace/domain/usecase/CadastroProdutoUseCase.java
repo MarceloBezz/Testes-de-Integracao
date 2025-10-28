@@ -1,13 +1,13 @@
 package br.com.alura.marketplace.domain.usecase;
 
 import br.com.alura.marketplace.domain.entity.Produto;
+import br.com.alura.marketplace.domain.exception.BusinessException;
 import br.com.alura.marketplace.domain.repository.BucketRepository;
 import br.com.alura.marketplace.domain.repository.PetStoreRepository;
 import br.com.alura.marketplace.domain.repository.ProdutoRepository;
 import br.com.alura.marketplace.domain.repository.QueueRepository;
 import lombok.RequiredArgsConstructor;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static br.com.alura.marketplace.domain.util.ValidationUtil.validate;
@@ -16,20 +16,19 @@ import static br.com.alura.marketplace.domain.util.ValidationUtil.validate;
 @Service
 public class CadastroProdutoUseCase {
     
-    @Autowired
-    private ProdutoRepository produtoRepository;
+    private final ProdutoRepository produtoRepository;
 
-    @Autowired
-    private PetStoreRepository petStoreRepository;
+    private final PetStoreRepository petStoreRepository;
 
-    @Autowired
-    private BucketRepository bucketRepository;
+    private final BucketRepository bucketRepository;
 
-    @Autowired
-    private QueueRepository queueRepository;
+    private final QueueRepository queueRepository;
     
     public Produto cadastrar(Produto produto) {
         validate(produto);
+
+        if (produto.getNome().startsWith("-"))
+            throw new BusinessException("O nome não pode começar com -");
 
         if (!produto.getFotos().isEmpty())
             produto.getFotos()

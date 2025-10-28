@@ -1,12 +1,11 @@
-package br.com.alura.marketplace.domain.factory;
+package br.com.alura.marketplace.domain.entity;
 
-import static br.com.alura.marketplace.domain.factory.FotoFactory.criaFoto;
+import static br.com.alura.marketplace.domain.entity.FotoFactory.criaFoto;
 import static lombok.AccessLevel.PRIVATE;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import br.com.alura.marketplace.domain.entity.Produto;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
