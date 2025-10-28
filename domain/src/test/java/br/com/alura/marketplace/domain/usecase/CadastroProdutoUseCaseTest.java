@@ -1,11 +1,11 @@
 package br.com.alura.marketplace.domain.usecase;
 
+import static br.com.alura.marketplace.domain.factory.ProdutoFactory.criarProduto;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import br.com.alura.marketplace.domain.entity.Produto;
 
 class CadastroProdutoUseCaseTest {
 
@@ -13,7 +13,7 @@ class CadastroProdutoUseCaseTest {
 
     @BeforeEach
     void beforeEach() {
-        cadastroProdutoUseCase = new CadastroProdutoUseCase(null, null, null, null);
+        cadastroProdutoUseCase = new CadastroProdutoUseCase();
     }
 
     @DisplayName("Quando cadastrar produto")
@@ -28,10 +28,7 @@ class CadastroProdutoUseCaseTest {
             @Test
             void teste1() {
                 // Dado
-                var produto = Produto.builder()
-                        .nome("Nome 1")
-                        .categoria("Livro")
-                        .build();
+                var produto = criarProduto().comTodosOsCampos();
 
                 // Quando
                 var atual = cadastroProdutoUseCase.cadastrar(produto);

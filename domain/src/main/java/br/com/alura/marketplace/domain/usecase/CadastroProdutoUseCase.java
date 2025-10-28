@@ -6,6 +6,8 @@ import br.com.alura.marketplace.domain.repository.PetStoreRepository;
 import br.com.alura.marketplace.domain.repository.ProdutoRepository;
 import br.com.alura.marketplace.domain.repository.QueueRepository;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import static br.com.alura.marketplace.domain.util.ValidationUtil.validate;
@@ -13,15 +15,19 @@ import static br.com.alura.marketplace.domain.util.ValidationUtil.validate;
 @RequiredArgsConstructor
 @Service
 public class CadastroProdutoUseCase {
+    
+    @Autowired
+    private ProdutoRepository produtoRepository;
 
-    private final ProdutoRepository produtoRepository;
+    @Autowired
+    private PetStoreRepository petStoreRepository;
 
-    private final PetStoreRepository petStoreRepository;
+    @Autowired
+    private BucketRepository bucketRepository;
 
-    private final BucketRepository bucketRepository;
-
-    private final QueueRepository queueRepository;
-
+    @Autowired
+    private QueueRepository queueRepository;
+    
     public Produto cadastrar(Produto produto) {
         validate(produto);
 
