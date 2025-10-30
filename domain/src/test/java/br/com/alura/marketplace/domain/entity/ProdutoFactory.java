@@ -35,5 +35,16 @@ public final class ProdutoFactory {
                     .atualizadoEm(LocalDateTime.now())
                     .build();
         }
+
+        public Produto comTodosOsCamposExcetoDB() {
+            comTodosOsCampos();
+            return builder
+                    .produtoId(null)
+                    .criadoEm(null)
+                    .atualizadoEm(null)
+                    .clearFotos()
+                    .foto(criaFoto().comTodosOsCamposExcetoDB())
+                    .build();
+        }
     }
 }

@@ -27,5 +27,15 @@ public final class FotoFactory {
                     .atualizadoEm(LocalDateTime.now())
                     .build();
         }
+
+        public Foto comTodosOsCamposExcetoDB() {
+            comTodosOsCampos();
+            return builder
+                    .fotoId(null)
+                    .criadoEm(null)
+                    .atualizadoEm(null)
+                    .link("null")
+                    .build();
+        }
     }
 }

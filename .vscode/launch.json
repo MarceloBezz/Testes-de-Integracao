@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<api-market-place.application>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "br.com.alura.marketplace.application.Application",
+            "projectName": "api-market-place.application",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
