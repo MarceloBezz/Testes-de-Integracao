@@ -2,6 +2,7 @@ package br.com.alura.marketplace.application.v1.controller;
 
 import br.com.alura.marketplace.application.v1.dto.ProdutoDto;
 import br.com.alura.marketplace.application.v1.mapper.ProdutoDtoMapper;
+import br.com.alura.marketplace.domain.entity.Produto;
 import br.com.alura.marketplace.domain.usecase.CadastroProdutoUseCase;
 import br.com.alura.marketplace.domain.usecase.ConsultaProdutoUseCase;
 import jakarta.validation.Valid;
@@ -35,8 +36,9 @@ public class ProdutoController {
             @RequestBody
             ProdutoDto.Request requestBody) {
         var produto = mapper.converter(requestBody);
-        var produtoCriado = cadastroCarrinhoUseCase.cadastrar(produto);
-        return mapper.converter(produtoCriado);
+        // var produtoCriado = cadastroCarrinhoUseCase.cadastrar(produto);
+        // return mapper.converter(produtoCriado);
+        return mapper.converter(Produto.builder().build());
     }
 
     @GetMapping(path = "/{produtoId}",
