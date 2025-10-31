@@ -40,10 +40,8 @@ public class CadastroProdutoUseCase {
 
          var produtoSalvo = produtoRepository.save(produto);
 
-        // queueRepository.notificarCadastro(produtoSalvo);
+         queueRepository.notificarCadastro(produtoSalvo);
 
-        // return produtoSalvo;
-
-        return Produto.builder().build();
+         return produtoSalvo;
     }
 }

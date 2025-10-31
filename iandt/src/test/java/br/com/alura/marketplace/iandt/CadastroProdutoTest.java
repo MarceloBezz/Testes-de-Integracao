@@ -9,6 +9,7 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 import br.com.alura.marketplace.application.Application;
 import br.com.alura.marketplace.iandt.setup.LocalStacKSetup;
 import br.com.alura.marketplace.iandt.setup.PostgresSetup;
+import br.com.alura.marketplace.iandt.setup.RabbitMQSetup;
 import br.com.alura.marketplace.iandt.setup.WireMockSetup;
 import io.awspring.cloud.s3.S3Template;
 import io.restassured.RestAssured;
@@ -33,7 +34,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 @ContextConfiguration(classes = Application.class)
 @Testcontainers
-public class CadastroProdutoTest implements LocalStacKSetup, WireMockSetup, PostgresSetup {
+public class CadastroProdutoTest implements LocalStacKSetup, WireMockSetup, PostgresSetup, RabbitMQSetup {
 
     @LocalServerPort
     Integer port;

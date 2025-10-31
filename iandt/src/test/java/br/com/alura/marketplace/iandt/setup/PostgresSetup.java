@@ -12,7 +12,7 @@ public interface PostgresSetup {
     PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>("postgres:latest");
 
     @DynamicPropertySource
-    static void localstackDynamicPropertySource(DynamicPropertyRegistry registry) {
+    static void postgresDynamicPropertySource(DynamicPropertyRegistry registry) {
         registry.add("spring.datasource.driverClassName", POSTGRES::getDriverClassName);
         registry.add("spring.datasource.url", POSTGRES::getJdbcUrl);
         registry.add("spring.datasource.username", POSTGRES::getUsername);
