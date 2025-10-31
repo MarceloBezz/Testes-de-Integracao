@@ -36,9 +36,9 @@ public class ProdutoController {
             @RequestBody
             ProdutoDto.Request requestBody) {
         var produto = mapper.converter(requestBody);
-        // var produtoCriado = cadastroCarrinhoUseCase.cadastrar(produto);
-        // return mapper.converter(produtoCriado);
-        return mapper.converter(Produto.builder().build());
+        var produtoCriado = cadastroCarrinhoUseCase.cadastrar(produto);
+        return mapper.converter(produtoCriado);
+        // return mapper.converter(Produto.builder().build());
     }
 
     @GetMapping(path = "/{produtoId}",
