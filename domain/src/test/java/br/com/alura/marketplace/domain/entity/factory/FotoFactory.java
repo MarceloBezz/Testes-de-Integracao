@@ -1,9 +1,10 @@
-package br.com.alura.marketplace.domain.entity;
+package br.com.alura.marketplace.domain.entity.factory;
 
 import static lombok.AccessLevel.PRIVATE;
 
 import java.time.LocalDateTime;
 
+import br.com.alura.marketplace.domain.entity.Foto;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 

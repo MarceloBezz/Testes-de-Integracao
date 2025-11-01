@@ -1,6 +1,6 @@
 package br.com.alura.marketplace.infra.repository;
 
-import static br.com.alura.marketplace.domain.entity.ProdutoFactory.criarProduto;
+import static br.com.alura.marketplace.domain.entity.factory.ProdutoFactory.criarProduto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.util.ReflectionTestUtils.setField;
 

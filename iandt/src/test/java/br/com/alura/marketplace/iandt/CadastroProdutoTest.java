@@ -7,6 +7,7 @@ import static com.github.tomakehurst.wiremock.client.WireMock.post;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import br.com.alura.marketplace.application.Application;
+import br.com.alura.marketplace.domain.repository.ProdutoRepository;
 import br.com.alura.marketplace.iandt.setup.LocalStacKSetup;
 import br.com.alura.marketplace.iandt.setup.PostgresSetup;
 import br.com.alura.marketplace.iandt.setup.RabbitMQSetup;
@@ -18,10 +19,7 @@ import io.restassured.http.ContentType;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -45,6 +43,9 @@ public class CadastroProdutoTest implements LocalStacKSetup, WireMockSetup, Post
     @Autowired
     S3Template s3Template;
 
+    @Autowired
+    ProdutoRepository produtoRepository;
+
     @Value("${aws.s3.bucket.name}")
     String bucketName;
 
@@ -54,6 +55,11 @@ public class CadastroProdutoTest implements LocalStacKSetup, WireMockSetup, Post
 
         if(!s3Template.bucketExists(bucketName))
             s3Template.createBucket(bucketName);
+    }
+
+    @AfterEach
+    void afterEach() {
+        produtoRepository.deleteAll();
     }
 
     @DisplayName("Quando cadastrar um produto")

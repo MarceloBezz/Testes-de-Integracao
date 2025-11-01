@@ -1,6 +1,6 @@
 package br.com.alura.marketplace.domain.usecase;
 
-import static br.com.alura.marketplace.domain.entity.ProdutoFactory.criarProduto;
+import static br.com.alura.marketplace.domain.entity.factory.ProdutoFactory.criarProduto;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
