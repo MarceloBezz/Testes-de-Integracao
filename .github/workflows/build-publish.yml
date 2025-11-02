@@ -73,6 +73,24 @@ jobs:
       - name: Gera atestado da imagem
         uses: actions/attest-build-provenance@v2
         with:
-          subject-name: index.docker.io/rodsordi/api-market-place
+          subject-name: index.docker.io/marcelobezz07/api-market-place
           subject-digest: ${{ steps.push.outputs.digest }}
           push-to-registry: true
+
+  integration_tests:
+    needs: [publish_to_registry]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório
+        uses: actions/checkout@v4
+
+      - name: Configurar JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+          architecture: x64
+          cache: maven
+
+      - name: Executa testes de integração com Maven
+        run: mvn test -DintegrationTests
