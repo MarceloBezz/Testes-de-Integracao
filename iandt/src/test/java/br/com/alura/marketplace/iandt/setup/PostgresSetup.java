@@ -5,8 +5,6 @@ import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
-
 public interface PostgresSetup {
 
     PostgreSQLContainer<?> POSTGRES = new PostgreSQLContainer<>("postgres:latest");

@@ -4,9 +4,6 @@ import org.junit.jupiter.api.BeforeAll;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.RabbitMQContainer;
-import org.testcontainers.utility.DockerImageName;
-
-import static org.testcontainers.containers.localstack.LocalStackContainer.Service.S3;
 import static org.testcontainers.utility.DockerImageName.parse;
 
 public interface RabbitMQSetup {

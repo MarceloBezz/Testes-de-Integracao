@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Modifier;
 import java.util.Collection;
 
 import static java.lang.String.format;
@@ -58,6 +59,9 @@ public final class ReflectionUtil {
         try {
             var fields = clazz.getDeclaredFields();
             for (var field : fields) {
+                if (field.isSynthetic() || Modifier.isStatic(field.getModifiers()))
+                    continue;
+
                 field.setAccessible(true);
 
                 var actualFieldValue = field.get(actual);
