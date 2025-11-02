@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: api-market-place-artifact
-          path: application/target
+          path: .
 
   publish_to_registry:
     needs: [build]
