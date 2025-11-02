@@ -57,6 +57,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: marcelobezz07/api-market-place
+          tags: |
+            latest
 
       - name: Constroi e envia imagem Docker
         id: push
